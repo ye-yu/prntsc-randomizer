@@ -2,8 +2,7 @@
   if (window.prntscLoaded) return;
   window.prntscLoaded = true;
 
-  var ascii = "qwertyuiopasdfghjklzxcvbnm".split("");
-  var numbers = "1234567890".split("");
+  var ascii = "qwertyuiopasdfghjklzxcvbnm1234567890".split("");
   var randomMode = true;
 
   function random(array) {
@@ -14,10 +13,10 @@
     return [
       random(ascii),
       random(ascii),
-      random(numbers),
-      random(numbers),
-      random(numbers),
-      random(numbers),
+      random(ascii),
+      random(ascii),
+      random(ascii),
+      random(ascii),
     ].join("")
   }
 
@@ -59,27 +58,12 @@
 
   browser.contextMenus.create({
     id: "mode-random",
-    title: "Mode: Random"
+    title: "Go Prnt.Sc"
   });
 
   browser.browserAction.onClicked.addListener(goToRandom);
 
-  browser.contextMenus.onClicked.addListener(function(info, tab) {
-    browser.contextMenus.removeAll();
-    if (info.menuItemId === "mode-random") {
-      browser.contextMenus.create({
-        id: "mode-incremental",
-        title: "Mode: Incremental"
-      });
-      randomMode = false;
-    } else {
-      browser.contextMenus.create({
-        id: "mode-random",
-        title: "Mode: Random"
-      });
-      randomMode = true;
-    }
-
+  browser.contextMenus.onClicked.addListener(function(_info, tab) {
     goToRandom(tab);
   });
 })();
