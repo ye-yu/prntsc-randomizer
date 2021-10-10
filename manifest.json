@@ -1,0 +1,28 @@
+{
+
+  "manifest_version": 2,
+  "name": "Prnt.sc Randomizer",
+  "version": "1.0",
+
+  "description": "Visits a random prnt.sc url",
+
+  "icons": {
+    "500": "icons/icon.png"
+  },
+
+  "homepage_url": "https://github.com/mdn/webextensions-examples/tree/master/beastify",
+
+  "permissions": [
+    "activeTab",
+    "contextMenus"
+  ],
+
+  "browser_action": {
+    "default_icon": "icons/icon.png",
+    "default_title": "Go Prnt.sc"
+  },
+
+  "background": {
+    "scripts": ["background.js"]
+  }
+}
