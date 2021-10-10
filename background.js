@@ -40,19 +40,17 @@
     });
   }
 
-  function generateURL(mode, path) {
-    if (mode === "random" || !path) return new URL(randomURI(), "https://prnt.sc").href
-    return new URL(path.slice(1, 3) + (+path.slice(3) + 1) % 10000, "https://prnt.sc").href
+  function generateURL() {
+    var id = randomURI();
+    console.debug({id});
+    return new URL(id, "https://prnt.sc").href;
   }
 
   function updateTabIfPrntSc(activeTab) {
-    const currentUrl = new URL(activeTab.url);
-    var mode = randomMode || currentUrl.pathname === "/" ? "random" : "incremental"
-    console.log({mode, randomMode})
     if (isPrntSc(activeTab.url)) {
       browser.tabs.update(activeTab.id, {
-        url: generateURL(mode, currentUrl.pathname)
-      })
+        url: generateURL()
+      });
     }
   }
 
